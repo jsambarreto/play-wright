@@ -7,7 +7,7 @@ i = 0
 def executa_teste( usuario: str, senha: str):
     with sync_playwright() as p:
         try:
-            browser = p.chromium.launch(headless=False)#headless=False
+            browser = p.chromium.launch()#headless=False
             context = browser.new_context()
             context.set_default_timeout(5000)
             page = context.new_page()
@@ -22,6 +22,5 @@ def executa_teste( usuario: str, senha: str):
             page.locator('xpath=//*[@id="wrap"]/div[1]/div[1]/div[2]/div[3]/a').click()
             time.sleep(2)
         except Exception as e:
-            print("Erro: ", e)
             return e
     return (i++1)
